@@ -19,7 +19,7 @@ class Router
 
     public function comprobarRutas()
     {
-        
+
         // Proteger Rutas...
         session_start();
 
@@ -28,7 +28,12 @@ class Router
 
         // $auth = $_SESSION['login'] ?? null;
 
-        $currentUrl = ($_SERVER['REQUEST_URI'] === '') ? '/' :  $_SERVER['REQUEST_URI'] ;
+        if ($_SERVER['PATH_INFO']) {
+            $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        } else {
+            $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
+        }
+
         $method = $_SERVER['REQUEST_METHOD'];
 
         $splitURL = explode('?', $currentUrl);
@@ -39,7 +44,7 @@ class Router
             $fn = $this->postRoutes[$splitURL[0]] ?? null;
         }
 
-        if ( $fn ) {
+        if ($fn) {
             // Call user fn va a llamar una función cuando no sabemos cual sera
             call_user_func($fn, $this); // This es para pasar argumentos
         } else {
