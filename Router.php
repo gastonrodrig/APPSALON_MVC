@@ -28,7 +28,7 @@ class Router
 
         // $auth = $_SESSION['login'] ?? null;
 
-        $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
+        $currentUrl = $_SERVER['REDIRECT_URL'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
         //dividimos la URL actual cada vez que exista un '?' eso indica que se están pasando variables por la url
