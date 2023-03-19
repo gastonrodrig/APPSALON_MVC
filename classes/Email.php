@@ -21,14 +21,14 @@ class Email {
         // Crear el objeto del email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = 'smtp-relay.sendinblue.com';
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'a94279c800f996';
-        $mail->Password = '72b56115da5e1d';
+        $mail->Username = 'gaston.rodriguez@icloud.com';
+        $mail->Password = 'y0f82bWDTztHpFrR';
+        $mail->Port = 587;
 
         $mail->setFrom('cuentas@appsalon.com');
-        $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
+        $mail->addAddress($this->email);
         $mail->Subject ='Confirma tu cuenta';
 
         // Set HTML
@@ -38,7 +38,7 @@ class Email {
         $contenido = "<html>";
         $contenido .= "<p>Hola <strong>" . $this->nombre . "</strong> Has creado tu cuenta en App Salon, 
         solo debes presionarla confirmando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aquí: <a href='https://rocky-everglades-58937.herokuapp.com/confirmar-cuenta?token=" . $this->token . "'>
+        $contenido .= "<p>Presiona aquí: <a href='https://gastonrodrig04.alwaysdata.net.com/confirmar-cuenta?token=" . $this->token . "'>
         Confirmar Cuenta</a> </p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido .= "</html>";
@@ -70,7 +70,7 @@ class Email {
         $contenido = "<html>";
         $contenido .= "<p>Hola <strong>" . $this->nombre . "</strong> Has solicitado reestablecer tu password, sigue 
         el siguiente enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aquí: <a href='https://rocky-everglades-58937.herokuapp.com/recuperar?token=" . $this->token . "'>
+        $contenido .= "<p>Presiona aquí: <a href='https://gastonrodrig04.alwaysdata.net.com/recuperar?token=" . $this->token . "'>
         Reestablecer Password</a></p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido .= "</html>";
