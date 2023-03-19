@@ -4,7 +4,8 @@ namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-class Email {
+class Email
+{
 
     public $email;
     public $nombre;
@@ -17,19 +18,20 @@ class Email {
         $this->token = $token;
     }
 
-    public function enviarConfirmacion() {
+    public function enviarConfirmacion()
+    {
         // Crear el objeto del email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp-relay.sendinblue.com';
+        $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Username = 'gaston.rodriguez@icloud.com';
-        $mail->Password = 'y0f82bWDTztHpFrR';
-        $mail->Port = 587;
+        $mail->Port = 2525;
+        $mail->Username = 'a94279c800f996';
+        $mail->Password = '72b56115da5e1d';
 
         $mail->setFrom('cuentas@appsalon.com');
-        $mail->addAddress($this->email);
-        $mail->Subject ='Confirma tu cuenta';
+        $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
+        $mail->Subject = 'Confirma tu cuenta';
 
         // Set HTML
         $mail->isHTML(TRUE);
@@ -47,10 +49,10 @@ class Email {
 
         // Enviar el mail
         $mail->send();
-
     }
 
-    public function enviarInstrucciones() {
+    public function enviarInstrucciones()
+    {
         // Crear el objeto del email
         $mail = new PHPMailer();
         $mail->isSMTP();
@@ -62,7 +64,7 @@ class Email {
 
         $mail->setFrom('cuentas@appsalon.com');
         $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
-        $mail->Subject ='Reestablece tu password';
+        $mail->Subject = 'Reestablece tu password';
 
         // Set HTML
         $mail->isHTML(TRUE);
@@ -80,6 +82,5 @@ class Email {
 
         // Enviar el mail
         $mail->send();
-
     }
 }
