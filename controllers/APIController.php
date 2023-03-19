@@ -10,14 +10,14 @@ class APIController {
     public static function index() {
         $servicios = Servicio::all();
         // echo json_encode($servicios);
-        echo json_encode($servicios, JSON_UNESCAPED_UNICODE);
+        echo json_encode($servicios);
     }
 
     public static function guardar() {
         
         // Almacena la Cita y devuelve el ID
         $cita = new Cita($_POST);
-        $resultado = $cita->guardar();
+        $resultado = $cita->crear();
 
         debuguear($resultado);
         $id = $resultado['id']; // Viene de la base de datos
@@ -34,7 +34,7 @@ class APIController {
             $citaServicio->guardar();
         };
 
-        echo json_encode(['resultado' => $resultado], JSON_UNESCAPED_UNICODE);
+        echo json_encode(['resultado' => $resultado]);
     }
 
     public static function eliminar() {
