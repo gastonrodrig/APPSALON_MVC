@@ -17,9 +17,8 @@ class APIController {
         
         // Almacena la Cita y devuelve el ID
         $cita = new Cita($_POST);
-        $resultado = $cita->crear();
+        $resultado = $cita->guardar();
 
-        debuguear($resultado);
         $id = $resultado['id']; // Viene de la base de datos
 
         $idServicios = explode(",", $_POST['servicios']);
