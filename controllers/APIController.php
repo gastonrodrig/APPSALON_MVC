@@ -19,6 +19,7 @@ class APIController {
         $cita = new Cita($_POST);
         $resultado = $cita->guardar();
 
+        debuguear($resultado);
         $id = $resultado['id']; // Viene de la base de datos
 
         $idServicios = explode(",", $_POST['servicios']);
