@@ -31,7 +31,7 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
-            $fn = $this->getRoutes[$currentUrl] ?? null; //$splitURL[0] contiene la URL sin variables 
+            $fn = $this->getRoutes[$currentUrl] ?? null;
         } else {
             $fn = $this->postRoutes[$currentUrl] ?? null;
         }
