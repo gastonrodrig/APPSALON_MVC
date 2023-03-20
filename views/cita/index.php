@@ -42,7 +42,7 @@
             </div>
 
             <div class="campo">
-                <label for="hora">Hola</label>
+                <label for="hora">Hora</label>
                 <input 
                     type="time"
                     id="hora"
